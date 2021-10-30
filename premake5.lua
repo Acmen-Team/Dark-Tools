@@ -1,6 +1,6 @@
 workspace "Dark-Tools"
 	architecture "x86_64"
-	startproject "Dark-Render"
+	startproject "Dark-Tools"
 
 	configurations
 	{
@@ -13,6 +13,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder(solution directory)
 IncludeDir = {}
+IncludeDir["glm"] = "Dark-Tools/vendor/glm"
 
 project "Dark-Tools"
 	location "Dark-Tools"
@@ -28,6 +29,8 @@ project "Dark-Tools"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 
 	defines
@@ -38,6 +41,8 @@ project "Dark-Tools"
 	includedirs
 	{
 		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.glm}",
 	}
 
 	links
@@ -49,6 +54,9 @@ project "Dark-Tools"
 
 		defines
 		{
+			"DK_PLATFORM_WINDOWS",
+			"DK_BUILD_DLL",
+			"DK_ENABLE_ASSERTS"
 		}
 
 	filter "configurations:Debug"
