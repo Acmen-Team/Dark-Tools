@@ -1,3 +1,20 @@
+workspace "Dark-Tools"
+	architecture "x86_64"
+	startproject "Dark-Tools"
+
+	configurations
+	{
+		"Debug",
+		"Release",
+		"Dist"
+	}
+
+outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+-- Include directories relative to root folder(solution directory)
+IncludeDir = {}
+IncludeDir["glm"] = "Dark-Tools/vendor/glm"
+
 project "Dark-Tools"
 	location "Dark-Tools"
 	kind "StaticLib"
@@ -16,10 +33,20 @@ project "Dark-Tools"
 		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
 	includedirs
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.glm}",
+	}
+
+	links
+	{
 	}
 
 	filter "system:windows"
