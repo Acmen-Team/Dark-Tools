@@ -7,9 +7,6 @@ Description:Dark Tools
 
 #include "DTools.h"
 
-#include "Core/Macro.h"
-#include "Core/Log.h"
-
 namespace DTools {
 
   void DKTools::Init()

@@ -1,6 +1,6 @@
 workspace "Dark-Tools"
 	architecture "x86_64"
-	startproject "Dark-Tools"
+	startproject "Tools-Example"
 
 	configurations
 	{
@@ -56,7 +56,7 @@ project "Dark-Tools"
 		{
 			"DK_PLATFORM_WINDOWS",
 			"DK_BUILD_DLL",
-			"DK_ENABLE_ASSERTS"
+			"DK_ENABLE_ASSERTS",
 		}
 
 	filter "configurations:Debug"
@@ -72,4 +72,57 @@ project "Dark-Tools"
 	filter "configurations:Dist"
 		defines "DKTL_Dist"
 		runtime "Release"
+		optimize "On"
+
+project "Tools-Example"
+	location "Tools-Example"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "On"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"Dark-Tools/src",
+		"Dark-Tools/vendor/spdlog/include",
+	}
+
+	links
+	{
+		"Dark-Tools"
+	}
+	
+	filter "system:windows"
+		systemversion "latest"
+
+		defines
+		{
+			"DK_PLATFORM_WINDOWS",
+			"DK_ENABLE_ASSERTS",	
+		}
+
+	filter "configurations:Debug"
+		defines "DKTL_DEBUG"
+		runtime "Debug"
+		kind "ConsoleApp"
+		symbols "On"
+
+	filter "configurations:Release"
+		defines "DKTL_RELEASE"
+		runtime "Release"
+		kind "WindowedApp"
+		optimize "On"
+
+	filter "configurations:Dist"
+		defines "DKTL_Dist"
+		runtime "Release"
+		kind "WindowedApp"
 		optimize "On"
