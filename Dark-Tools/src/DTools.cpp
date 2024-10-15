@@ -9,9 +9,4 @@ Description:Dark Tools
 
 namespace DTools {
 
-  void DKTools::Init()
-  {
-	Log::Init();
-  }
-
 }

@@ -13,7 +13,6 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder(solution directory)
 IncludeDir = {}
-IncludeDir["glm"] = "Dark-Tools/vendor/glm"
 
 project "Dark-Tools"
 	location "Dark-Tools"
@@ -27,10 +26,9 @@ project "Dark-Tools"
 
 	files
 	{
+		"%{prj.name}/include/**.h",
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
-		"%{prj.name}/vendor/glm/glm/**.hpp",
-		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 
 	defines
@@ -40,9 +38,8 @@ project "Dark-Tools"
 
 	includedirs
 	{
-		"%{prj.name}/src",
+		"%{prj.name}/include",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.glm}",
 	}
 
 	links
@@ -91,8 +88,7 @@ project "Tools-Example"
 
 	includedirs
 	{
-		"Dark-Tools/src",
-		"Dark-Tools/vendor/spdlog/include",
+		"Dark-Tools/include",
 	}
 
 	links

@@ -1,5 +1,5 @@
 ﻿/*************************************************
-Copyright © 2020 - 2020 YX.All Rights Reserved
+Copyright © 2020 - 2024 YxY.All Rights Reserved
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,23 +24,19 @@ Description:Log System
 **************************************************/
 #pragma once
 
-#include "Macro.h"
-#include <spdlog/spdlog.h>
-#include <spdlog/fmt/ostr.h>
+#include "Macro/DynamicLinkMacros.h"
 
 namespace DTools {
 
-  class DARK_API Log
-  {
-  public:
-	static void Init();
+	class DARK_API Log
+	{
+	public:
+		void Init(const std::string& tags);
 
-	inline static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return s_CoreLogger; }
-	inline static std::shared_ptr<spdlog::logger>& GetClientLogger() { return s_ClientLogger; }
-  private:
-	static std::shared_ptr<spdlog::logger> s_CoreLogger;
-	static std::shared_ptr<spdlog::logger> s_ClientLogger;
-  };
+		void Trace();
+	private:
+		Ref<spdlog::logger> m_Logger;
+	};
 
 }
 
@@ -57,3 +53,14 @@ namespace DTools {
 #define DK_WARN(...)			Log::GetClientLogger()->warn(__VA_ARGS__);
 #define DK_ERROR(...)			Log::GetClientLogger()->error(__VA_ARGS__);
 #define DK_FATAL(...)			Log::GetClientLogger()->fatal(__VA_ARGS__);
+
+/*
+* Asserts are used to check if a condition is true, if not, the program will stop and print the error message.
+*/
+#ifdef DK_ENABLE_ASSERTS
+#define DK_ASSERT(x, ...) { if(!(x)) { DK_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#define DK_CORE_ASSERT(x, ...) { if(!(x)) { DK_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+#define DK_ASSERT(x, ...)
+#define DK_CORE_ASSERT(x, ...)
+#endif
