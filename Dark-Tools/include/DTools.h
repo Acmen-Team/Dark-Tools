@@ -29,5 +29,5 @@ Description: DTools header file
 #include "Macro/DynamicLinkMacros.h"
 
 // Log
-#include "Log/Log.h"
+#include "Logger/Logger.h"
 

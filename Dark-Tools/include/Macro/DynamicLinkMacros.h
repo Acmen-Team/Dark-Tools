@@ -40,5 +40,5 @@ This header file defines macros for managing dynamic linking on the Windows plat
 #define DARK_API
 #endif
 #else
-#error Dark Only Support Windows!
+#error Dark Currently Supports Windows Only!
 #endif
