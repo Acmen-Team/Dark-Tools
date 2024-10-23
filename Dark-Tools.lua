@@ -16,9 +16,9 @@ IncludeDir = {}
 
 project "Dark-Tools"
 	location "Dark-Tools"
-	kind "StaticLib"
+	kind "SharedLib"
 	language "C++"
-	cppdialect "C++17"
+	cppdialect "C++20"
 	staticruntime "On"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -52,29 +52,34 @@ project "Dark-Tools"
 		defines
 		{
 			"DK_PLATFORM_WINDOWS",
+			"DK_DYNAMIC_LINK",
 			"DK_BUILD_DLL",
-			"DK_ENABLE_ASSERTS",
+		}
+
+		postbuildcommands
+		{
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Tools-Example/\"")
 		}
 
 	filter "configurations:Debug"
-		defines "DKTL_DEBUG"
+		defines "DK_DEBUG"
 		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "DKTL_RELEASE"
+		defines "DK_RELEASE"
 		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "DKTL_Dist"
+		defines "DK_Dist"
 		runtime "Release"
 		optimize "On"
 
 project "Tools-Example"
 	location "Tools-Example"
 	language "C++"
-	cppdialect "C++17"
+	cppdialect "C++20"
 	staticruntime "On"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -102,23 +107,24 @@ project "Tools-Example"
 		defines
 		{
 			"DK_PLATFORM_WINDOWS",
+			"DK_DYNAMIC_LINK",
 			"DK_ENABLE_ASSERTS",	
 		}
 
 	filter "configurations:Debug"
-		defines "DKTL_DEBUG"
+		defines "DK_DEBUG"
 		runtime "Debug"
 		kind "ConsoleApp"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines "DKTL_RELEASE"
+		defines "DK_RELEASE"
 		runtime "Release"
 		kind "WindowedApp"
 		optimize "On"
 
 	filter "configurations:Dist"
-		defines "DKTL_Dist"
+		defines "DK_Dist"
 		runtime "Release"
 		kind "WindowedApp"
 		optimize "On"
