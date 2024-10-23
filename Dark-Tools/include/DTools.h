@@ -25,6 +25,24 @@ Description: DTools header file
 
 #pragma once
 
+/*
+* Version 0.1.0-alpha
+* This is the main header file for the Dark-Tools library.
+* It includes all the necessary headers for the library.
+*/
+
+#DKTOOLS_VERSION "0.1.0-alpha"
+
+#DKTOOLS_VERSION_MAJOR 0
+#DKTOOLS_VERSION_MINOR 1
+#DKTOOLS_VERSION_PATCH 0
+
+int GetDKToolsVersion()
+{
+    // MAJOR * 100 + MINOR * 10 + PATCH
+    return DKTOOLS_VERSION_MAJOR * 100 + DKTOOLS_VERSION_MINOR * 10 + DKTOOLS_VERSION_PATCH;
+}
+
 // Macro
 #include "Macro/DynamicLinkMacros.h"
 
