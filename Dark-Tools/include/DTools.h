@@ -31,11 +31,11 @@ Description: DTools header file
 * It includes all the necessary headers for the library.
 */
 
-#DKTOOLS_VERSION "0.1.0-alpha"
+#define DKTOOLS_VERSION "0.1.0-alpha"
 
-#DKTOOLS_VERSION_MAJOR 0
-#DKTOOLS_VERSION_MINOR 1
-#DKTOOLS_VERSION_PATCH 0
+#define DKTOOLS_VERSION_MAJOR 0
+#define DKTOOLS_VERSION_MINOR 1
+#define DKTOOLS_VERSION_PATCH 0
 
 int GetDKToolsVersion()
 {
