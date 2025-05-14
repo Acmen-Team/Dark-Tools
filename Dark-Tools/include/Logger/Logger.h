@@ -60,17 +60,17 @@ namespace DTools
 #if defined(DK_DEBUG)
 // Core Logger Macros
 #define DK_CORE_TRACE(...)					DTools::GetCoreLogger()->Trace(__VA_ARGS__)
-#define DK_CORE_INFO(...)						DTools::GetCoreLogger()->Info(__VA_ARGS__)
-#define DK_CORE_WARN(...)						DTools::GetCoreLogger()->Warn(__VA_ARGS__)
+#define DK_CORE_INFO(...)					DTools::GetCoreLogger()->Info(__VA_ARGS__)
+#define DK_CORE_WARN(...)					DTools::GetCoreLogger()->Warn(__VA_ARGS__)
 #define DK_CORE_ERROR(...)					DTools::GetCoreLogger()->Error(__VA_ARGS__)
 #define DK_CORE_CRITICAL(...)				DTools::GetCoreLogger()->Critical(__VA_ARGS__)
 
 // Client Logger Macros
-#define DK_TRACE(...)								DTools::GetClientLogger()->Trace(__VA_ARGS__)
-#define DK_INFO(...)								DTools::GetClientLogger()->Info(__VA_ARGS__)
-#define DK_WARN(...)								DTools::GetClientLogger()->Warn(__VA_ARGS__)
-#define DK_ERROR(...)								DTools::GetClientLogger()->Error(__VA_ARGS__)
-#define DK_CRITICAL(...)						DTools::GetClientLogger()->Critical(__VA_ARGS__)
+#define DK_TRACE(...)						DTools::GetClientLogger()->Trace(__VA_ARGS__)
+#define DK_INFO(...)						DTools::GetClientLogger()->Info(__VA_ARGS__)
+#define DK_WARN(...)						DTools::GetClientLogger()->Warn(__VA_ARGS__)
+#define DK_ERROR(...)						DTools::GetClientLogger()->Error(__VA_ARGS__)
+#define DK_CRITICAL(...)					DTools::GetClientLogger()->Critical(__VA_ARGS__)
 #elif defined(DK_RELEASE)
 // Core Logger Macros
 #define DK_CORE_TRACE(...)
@@ -80,11 +80,11 @@ namespace DTools
 #define DK_CORE_CRITICAL(...)
 
 // Client Logger Macros
-#define DK_TRACE(...)								DTools::GetClientLogger()->Trace(__VA_ARGS__)
-#define DK_INFO(...)								DTools::GetClientLogger()->Info(__VA_ARGS__)
-#define DK_WARN(...)								DTools::GetClientLogger()->Warn(__VA_ARGS__)
-#define DK_ERROR(...)								DTools::GetClientLogger()->Error(__VA_ARGS__)
-#define DK_CRITICAL(...)						DTools::GetClientLogger()->Critical(__VA_ARGS__)
+#define DK_TRACE(...)						DTools::GetClientLogger()->Trace(__VA_ARGS__)
+#define DK_INFO(...)						DTools::GetClientLogger()->Info(__VA_ARGS__)
+#define DK_WARN(...)						DTools::GetClientLogger()->Warn(__VA_ARGS__)
+#define DK_ERROR(...)						DTools::GetClientLogger()->Error(__VA_ARGS__)
+#define DK_CRITICAL(...)					DTools::GetClientLogger()->Critical(__VA_ARGS__)
 #else
 // Core Logger Macros
 #define DK_CORE_TRACE(...)
@@ -103,8 +103,8 @@ namespace DTools
 
 // Assertion Macros
 #if defined(DK_ENABLE_ASSERTS)
-#define DK_CORE_ASSERT(x, ...)			if(!(x)) { DK_CORE_CRITICAL("Assertion Failed: %s", __VA_ARGS__); __debugbreak(); }
-#define DK_ASSERT(x, ...)						if(!(x)) { DK_CRITICAL("Assertion Failed: %s", __VA_ARGS__); __debugbreak(); }
+#define DK_CORE_ASSERT(x, ...)				if(!(x)) { DK_CORE_CRITICAL("Assertion Failed: %s", __VA_ARGS__); __debugbreak(); }
+#define DK_ASSERT(x, ...)					if(!(x)) { DK_CRITICAL("Assertion Failed: %s", __VA_ARGS__); __debugbreak(); }
 #else
 #define DK_CORE_ASSERT(x, ...)
 #define DK_ASSERT(x, ...)
