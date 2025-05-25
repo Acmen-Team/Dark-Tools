@@ -12,6 +12,10 @@ using namespace DTools;
 // Example of using the Logger
 void Example_Logger()
 {
+  DK_INFO("Dark-Tools Example Logger");
+
+  DK_INFO("Dark-Tools Version: %s", DKTOOLS_VERSION);
+
 	// Create a logger
 	Logger logger("Example");
 
