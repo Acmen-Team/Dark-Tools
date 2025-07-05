@@ -56,6 +56,7 @@ namespace DTools
 		m_LogImpl.reset();
 	}
 
+	// TODO: buffer overflow risk, consider using a safer alternative like `snprintf` or `std::string`
 
 	void Logger::Trace(const char* format, ...)
 	{
@@ -111,12 +112,12 @@ namespace DTools
 	Ref<Logger> s_CoreLogger = CreateRef<Logger>("Core");
 	Ref<Logger> s_ClientLogger = CreateRef<Logger>("Client");
 
-	DARK_API Ref<DTools::Logger> GetCoreLogger()
+  DTOOLS_API Ref<DTools::Logger> GetCoreLogger()
 	{
 		return s_CoreLogger;
 	}
 
-	DARK_API Ref<DTools::Logger> GetClientLogger()
+  DTOOLS_API Ref<DTools::Logger> GetClientLogger()
 	{
 		return s_ClientLogger;
 	}

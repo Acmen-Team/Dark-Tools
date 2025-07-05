@@ -53,7 +53,7 @@ project "Dark-Tools"
 		{
 			"DK_PLATFORM_WINDOWS",
 			"DK_DYNAMIC_LINK",
-			"DK_BUILD_DLL",
+			"DTOOLS_BUILD_DLL",
 		}
 
 		postbuildcommands
